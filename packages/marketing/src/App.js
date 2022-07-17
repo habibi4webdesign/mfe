@@ -9,7 +9,7 @@ import Landing from "./components/Landing";
 import Pricing from "./components/Pricing";
 
 const generateClassName = createGenerateClassName({
-  producitonPrefix: "ma",
+  producitonPrefix: "mar",
 });
 
 export default () => {
@@ -22,7 +22,7 @@ export default () => {
             <Route exact path="/pricing" component={Pricing} />
             <Route path="/" component={Landing} />
           </Switch>
-          
+
         </BrowserRouter>
       </StylesProvider>
     </div>
