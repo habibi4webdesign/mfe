@@ -3,7 +3,6 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const packageJson = require("../package.json");
 const commonConfig = require("./webpack.common");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const prodConfig = {
@@ -13,14 +12,8 @@ const prodConfig = {
     publicPath: "/marketing/latest/",
   },
   optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true, // set to true if you want JS source maps for css
-      }),
-      new CssMinimizerPlugin({}),
-    ],
+    minimize: true,
+    minimizer: ["...", new CssMinimizerPlugin({})],
   },
   module: {
     rules: [
