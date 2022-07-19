@@ -1,15 +1,15 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import {
   StylesProvider,
   createGenerateClassName,
-} from '@material-ui/core/styles';
+} from "@material-ui/core/styles";
+import Header from "./components/Header";
 
-import MarketingApp from './components/MarketingApp';
-import Header from './components/Header';
+const MarketingLazy = lazy(() => import("./components/MarketingApp"));
 
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'co',
+  productionPrefix: "volvo-con",
 });
 
 export default () => {
@@ -18,7 +18,11 @@ export default () => {
       <StylesProvider generateClassName={generateClassName}>
         <div>
           <Header />
-          <MarketingApp />
+          <Suspense fallback={<div>Loading....</div>}>
+            <Switch>
+              <Route path="/" component={MarketingLazy} />
+            </Switch>
+          </Suspense>
         </div>
       </StylesProvider>
     </BrowserRouter>
