@@ -4,6 +4,7 @@ import {
   StylesProvider,
   createGenerateClassName,
 } from "@material-ui/core/styles";
+import "./styles/index.scss"
 import Header from "./components/Header";
 
 const MarketingLazy = lazy(() => import("./components/MarketingApp"));
