@@ -4,7 +4,7 @@ const packageJson = require("../package.json");
 const commonConfig = require("./webpack.common");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const prodConfig = {
   mode: "production",
@@ -19,7 +19,7 @@ const prodConfig = {
         parallel: true,
         sourceMap: true, // set to true if you want JS source maps for css
       }),
-      new OptimizeCSSAssetsPlugin({}),
+      new CssMinimizerPlugin({}),
     ],
   },
   module: {
