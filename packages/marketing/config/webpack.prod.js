@@ -10,6 +10,7 @@ const prodConfig = {
   output: {
     filename: "[name].[contenthash].js",
     publicPath: "/marketing/latest/",
+    clean: true,
   },
   optimization: {
     minimize: true,
